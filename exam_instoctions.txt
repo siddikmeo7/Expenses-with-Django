@@ -1,0 +1,41 @@
+# EXAM FOR WEEK 6
+
+## KEEP IN MIND: YOU ARE DOING THIS FOR YOUR BRIGHT FUTURE, SO GIVE YOUR 120%!
+## ПОМНИТЕ: ВЫ ДЕЛАЕТЕ ЭТО ДЛЯ СВОЕГО СВЕТЛОГО БУДУЩЕГО, ПОЭТОМУ ВЫКЛАДЫВАЙТЕСЬ НА ВСЕ СВОИ 120%!
+
+## RULES:
+> No interner, no help to each other!
+
+> Make one file and place all your work there (e.g. odina_kholiqov.py)
+
+> Send the file at 
+
+> You have 2 hours only
+
+### Create a Simple Expense Tracker Using CRUD Operations with FBV and Django's User Model
+# Models Setup:
+Define an Expense model in expenses/models.py with the following fields:
+ - user: ForeignKey to User (linking each expense to the logged-in user).
+ - date: DateField for the expense date.
+ - category: CharField for the expense category.
+ - amount: DecimalField for the expense amount.
+ - description: TextField for additional details (optional).
+
+CRUD Operations with Function-Based Views:
+ - Create View (create_expense): Allow the user to add a new expense.
+ - Read/View List (expense_list): Display all expenses for the logged-in user.
+ - Update View (update_expense): Enable editing of an existing expense.
+ - Delete View (delete_expense): Allow removal of an expense.
+
+Templates:
+ - Create basic HTML templates:
+ - expense_list.html: Displays the list of expenses.
+ - expense_form.html: Form template for both creating and updating expenses.
+ - expense_confirm_delete.html: Confirmation page for deleting an expense.
+
+URL Configuration:
+ - Add URL patterns in expenses/urls.py:
+ - expenses/ → expense_list
+ - expenses/create/ → create_expense
+ - expenses/update/<int:id>/ → update_expense
+ - expenses/delete/<int:id>/ → delete_expense

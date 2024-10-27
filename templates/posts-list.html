@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            color: #007BFF;
+            margin: 0;
+            padding: 10px 0;
+            border-bottom: 2px solid #007BFF;
+            display: inline-block;
+        }
+        .con {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .id {
+            font-weight: bold;
+            color: #555;
+            text-align: start;
+        }
+        .card {
+            width: 300px;
+            text-align: center;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            padding: 15px;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        h2, h3, h4 {
+            margin: 5px 0;
+            color: #333;
+        }
+        h2 {
+            font-size: 1.2em;
+            color: #007BFF;
+        }
+        h3 {
+            font-size: 1.1em;
+            color: #28a745;
+        }
+        .desc {
+            font-size: 1em;
+            color: #4A4A4A; 
+        }
+        .button-container {
+            margin-top: 15px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .delete-button {
+            background-color: #dc3545;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Expenses</h1>
+    </div>
+    <div class="button-container" style="text-align: center; margin-bottom: 20px;">
+        <a href="{% url 'create_expense' %}"><button>Create New Expense</button></a>
+    </div>
+    <div class="con">
+       {% for post in posts %}
+       <div class="card">
+            <p class="id">ID: {{ post.id }}</p>
+            <h1>{{ post.user }}</h1>
+            <h1>{{ post.date }}</h1>
+            <h2>{{ post.category }}</h2>
+            <h3>Amount: {{ post.amount }}</h3>
+            <h4 class="desc">Description: {{ post.description }}</h4>
+            <div class="button-container">
+                <a href="{% url 'edit-lists' post.id %}"><button>Edit</button></a>
+                <a href="{% url 'delete_lists' post.id %}"><button class="delete-button">Delete</button></a>
+            </div>
+        </div>
+       {% endfor %}
+    </div>
+</body>
+</html>
